@@ -99,7 +99,7 @@ public class femaleSquashFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[32];
+        final int [] cursor=new int[24];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,23 +113,12 @@ public class femaleSquashFrag extends Fragment {
                 DocumentSnapshot ds = task.getResult();
 
 
-                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
-                final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
-                final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
-                final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
-                final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
+
+                final TextView scoreView=view.findViewById(R.id.score_view);
+                final TextView resultView=view.findViewById(R.id.result_view);
                 final RelativeLayout location=view.findViewById(R.id.location);
 
-                TextView set1score1=view.findViewById(R.id.score1set1);
-                TextView set1score2=view.findViewById(R.id.score2set1);
-                TextView set2score1=view.findViewById(R.id.score1set2);
-                TextView set2score2=view.findViewById(R.id.score2set2);
-                TextView set3score1=view.findViewById(R.id.score1set3);
-                TextView set3score2=view.findViewById(R.id.score2set3);
-                TextView set4score1=view.findViewById(R.id.score1set4);
-                TextView set4score2=view.findViewById(R.id.score2set4);
-                TextView set5score1=view.findViewById(R.id.score1set5);
-                TextView set5score2=view.findViewById(R.id.score2set5);
+
 
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
@@ -146,11 +135,8 @@ public class femaleSquashFrag extends Fragment {
 
                         location.setVisibility(View.GONE);
                         status.setVisibility(View.GONE);
-                        scoreView1.setVisibility(View.GONE);
-                        scoreView2.setVisibility(View.GONE);
-                        scoreView3.setVisibility(View.GONE);
-                        scoreView4.setVisibility(View.GONE);
-                        scoreView5.setVisibility(View.GONE);
+                        scoreView.setVisibility(View.GONE);
+                        resultView.setVisibility(View.GONE);
 
 
                     }
@@ -182,42 +168,26 @@ public class femaleSquashFrag extends Fragment {
                     }
                     else {
                         status.setVisibility(View.GONE);
-                        scoreView1.setVisibility(View.VISIBLE);
+                        scoreView.setVisibility(View.VISIBLE);
                         location.setVisibility(View.VISIBLE);
                         if(!ds.get("s2score1").toString().equals(""))
-                            scoreView2.setVisibility(View.VISIBLE);
-                        if(!ds.get("s3score1").toString().equals(""))
-                            scoreView3.setVisibility(View.VISIBLE);
-                        if(!ds.get("s4score1").toString().equals(""))
-                            scoreView4.setVisibility(View.VISIBLE);
-                        if(!ds.get("s5score1").toString().equals(""))
-                            scoreView5.setVisibility(View.VISIBLE);
-                        set1score1.setText(ds.get("s1score1").toString());
-                        set1score2.setText(ds.get("s1score2").toString());
-                        set2score1.setText(ds.get("s2score1").toString());
-                        set2score2.setText(ds.get("s2score2").toString());
-                        set3score1.setText(ds.get("s3score1").toString());
-                        set3score2.setText(ds.get("s3score2").toString());
-                        set4score1.setText(ds.get("s4score1").toString());
-                        set4score2.setText(ds.get("s4score2").toString());
-                        set5score1.setText(ds.get("s5score1").toString());
-                        set5score2.setText(ds.get("s5score2").toString());
+                            resultView.setVisibility(View.VISIBLE);
+                        scoreView.setText(ds.get("s1score1").toString());
+                        resultView.setText(ds.get("s1score2").toString());
+
                     }
                 }
                 else{
                     cursor[i]=0;
                     location.setVisibility(View.GONE);
                     status.setVisibility(View.GONE);
-                    scoreView1.setVisibility(View.GONE);
-                    scoreView2.setVisibility(View.GONE);
-                    scoreView3.setVisibility(View.GONE);
-                    scoreView4.setVisibility(View.GONE);
-                    scoreView5.setVisibility(View.GONE);
-
+                    scoreView.setVisibility(View.GONE);
+                    resultView.setVisibility(View.GONE);
                 }
             }
         });
         return rootView;
+
     }
 
 
